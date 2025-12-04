@@ -1,0 +1,17 @@
+Struktur Kode Program
+1. Import library
+2. Load Dataset
+3. Label Encoder & Split Data   
+4. Ekstraksi Fitur
+    - resize
+    - cvtcolor
+    - equalizeHist (kontras Gambar)
+5. Preprocessing
+    - Normalisasi
+    - Augmentasi
+    - Balancing Data
+6. Train MLP (pelatihan model memakai hasil ekstraksi)
+7. Train CNN (pelatihan model memakai hasil ekstraksi)
+    - Convert 1D CNN
+8. Evauasi Kinerja Model
+    
