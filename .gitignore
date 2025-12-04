@@ -1,0 +1,4 @@
+Dataset/
+myvenv/
+*.swp
+__pycache__/
