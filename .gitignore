@@ -1,4 +1,19 @@
+# virtual environment
+mevenv/
+
+# dataset
+img/
 Dataset/
-myvenv/
+
+# large trained models (optional, tapi disarankan)
+*.h5
+
+# generated data
+*.csv
+
+# editor temp files
 *.swp
+
+# notebook cache
+.ipynb_checkpoints/
 __pycache__/

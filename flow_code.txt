@@ -1,17 +1,56 @@
-Struktur Kode Program
-1. Import library
-2. Load Dataset
-3. Label Encoder & Split Data   
-4. Ekstraksi Fitur
-    - resize
-    - cvtcolor
-    - equalizeHist (kontras Gambar)
-5. Preprocessing
-    - Normalisasi
-    - Augmentasi
-    - Balancing Data
-6. Train MLP (pelatihan model memakai hasil ekstraksi)
-7. Train CNN (pelatihan model memakai hasil ekstraksi)
-    - Convert 1D CNN
-8. Evauasi Kinerja Model
-    
+    # ANALISIS KOMPARATIF KINERJA ALGORITMA MULTI-LAYER PERCEPTRON (MLP) DAN CONVOLUTION NEURAL NETWORK (CNN) DENGAN EKSTRAKSI FITUR LANDMARK MEDIAPIPE UNTUK PENGENALAN BAHASA ISYARAT INDONESIA
+            
+            Struktur Kode Program
+            1. Import library
+            2. Load Dataset
+            3. Ekstraksi Fitur
+                1. Preprocessing Gambar:
+                    - Konversi Ruang Warna (BGR → RGB)
+                    - Resize dengan Letterbox Padding
+                    - CLAHE (Contrast Limited Adaptive Histogram Equalization)
+
+                2. Detetksi Landmar:
+                    - Mediapipe hand
+                        1. 21 landmark per tangan
+                        2. Koordinat tiga dimensi (x, y, z)
+                        3. Informasi handedness (Left / Right)
+                        4. Nilai confidence deteksi
+                    - Treshold Confiden 
+                    - Detetksi 2 Tanggan kanan & kiri ditangani dengan (ORIENTATION CANONICALIZATION)
+
+                3. Ekstraksi kordinat landmark:
+                    - Normalisasi Realtif Wrist
+                    - format (x, y, z)
+
+                4. Visualisasi gambar landmark dan simpan landmark (CSV)
+                    - Koordinat landmark (63 fitur)
+                    - Label kelas
+                    - Jenis tangan (Left / Right)
+                    - Nama file sumber
+                    - Confidence deteksi
+        
+            4. Load Data landmark CSV
+                    - Melihat Jumalah Data ekstraksi setiap kelas
+                    - Label Encoder & Split Data (train & test= 80:20)
+
+            5. Preprocessi
+                - Normalisasi scale landmark MCP jari tengah (landmark 9)
+                - Augmentasi
+                - Weights
+                - One-Hot (Label untuk CNN)
+
+            6. Train MLP (pelatihan model memakai hasil ekstraksi)
+            7. Train CNN  (pelatihan model memakai hasil ekstraksi)
+                - Convert 1D CNN
+
+            8. Evauasi Kinerja Model
+                1. Accurasi
+                2. Precision, Recall, F1
+                3. Confusion Matrix
+                4. Model Complexity
+                5. Learning Curve
+                6. Training TIme
+                7. Cross-Validation Accuracy (K-Fold)
+                8. AUR & ROC 
+
+            9. Kesimpulan Hasil Evaluasi

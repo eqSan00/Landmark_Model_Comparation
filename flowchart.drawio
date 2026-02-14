@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2025-01-01T10:00:00.000Z" agent="ChatGPT" version="20.6.3">
+  <diagram name="Flowchart Sistem">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- START -->
+        <mxCell id="start" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="20" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Import Library -->
+        <mxCell id="import" value="Import Library" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="90" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Load Dataset -->
+        <mxCell id="load" value="Load Dataset" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="150" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Feature Extraction -->
+        <mxCell id="feature" value="EKSTRAKSI FITUR (MediaPipe)" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="220" width="450" height="240" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="preprocess" value="Preprocessing Gambar&#10;- BGR → RGB&#10;- Resize + Letterbox&#10;- CLAHE" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="260" width="410" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="landmark" value="Deteksi Landmark (MediaPipe)&#10;- 21 titik (x,y,z)&#10;- Handedness&#10;- Confidence Threshold&#10;- Orientation Canonicalization" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="340" width="410" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="normalize" value="Normalisasi Landmark&#10;- Relative Wrist (Landmark 0)&#10;- Format (x,y,z)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="440" width="410" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Save CSV -->
+        <mxCell id="savecsv" value="Simpan CSV&#10;- 63 fitur&#10;- Label kelas&#10;- Hand type&#10;- Nama file" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="520" width="200" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- Preprocessing -->
+        <mxCell id="preprocess2" value="Preprocessing Data" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="640" width="450" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prep1" value="Split Data (80:20) + Label Encoding" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="680" width="410" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prep2" value="Normalisasi Skala (Landmark 9)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="740" width="410" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prep3" value="Augmentasi + Class Weight + One-Hot Encoding" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="800" width="410" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Model Training -->
+        <mxCell id="model" value="Training Model" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="880" width="450" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="mlp" value="MLP&#10;- Input 63&#10;- Dense Layers&#10;- Softmax" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="920" width="190" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cnn" value="CNN 1D&#10;- Conv1D&#10;- MaxPooling&#10;- Flatten&#10;- Dense" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="940" y="920" width="190" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Evaluation -->
+        <mxCell id="eval" value="Evaluasi Model" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1040" width="450" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="eval1" value="Accuracy, Precision, Recall, F1" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1080" width="410" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="eval2" value="Confusion Matrix & Learning Curve" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1130" width="410" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="eval3" value="Cross Validation (K-Fold) & Training Time" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1180" width="410" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- End -->
+        <mxCell id="end" value="KESIMPULAN & MODEL TERBAIK" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1260" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
